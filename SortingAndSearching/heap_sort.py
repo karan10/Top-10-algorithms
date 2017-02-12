@@ -17,14 +17,14 @@ class HeapSort:
         return 2*i+1
 
     # convert the array into max heap
-    def build_max_heap(self, a):
+    def __build_max_heap(self, a):
 
         self.heap_size = len(a)-1
         for i in range(len(a)/2-1, -1, -1):
-            self.max_heapify(a,i)
+            self.__max_heapify(a,i)
 
     # arrange the array, to maintain heap property
-    def max_heapify(self,a, i):
+    def __max_heapify(self,a, i):
 
         l = self.left(i)
         r = self.right(i)
@@ -39,15 +39,15 @@ class HeapSort:
 
         if largest != i:
             a[i], a[largest] = a[largest], a[i]
-            self.max_heapify(a,largest)
+            self.__max_heapify(a,largest)
 
     def heap_sort(self, a):
 
-        self.build_max_heap(a)
+        self.__build_max_heap(a)
         for i in range(len(a)-1, 1, -1):
             a[0], a[i] = a[i], a[0]
             self.heap_size = self.heap_size-1
-            self.max_heapify(a,0)
+            self.__max_heapify(a,0)
 
 
 if __name__ == "__main__":
